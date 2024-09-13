@@ -1,0 +1,141 @@
+/* SpicetifyText Cider Port */
+
+/* Font Imports */
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Courier+Prime:wght@400;700&family=Cousine:wght@400;700&family=Cutive+Mono&family=DM+Mono:wght@300;400;500&family=Fira+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Nanum+Gothic+Coding:wght@400;700&family=PT+Mono&family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Share+Tech+Mono&family=Source+Code+Pro:wght@200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&family=Ubuntu+Mono:wght@400;700&family=VT323&display=swap");
+@import url("https://fonts.cdnfonts.com/css/asciid");
+
+/* Root Variables */
+:root {
+    --font-family: "DM Mono", monospace;
+    --font-size: 14px;
+    --font-weight: 400;
+    --line-height: 1.2;
+
+    --font-size-lyrics: 14px;
+
+    --font-family-header: "asciid";
+    --font-size-multiplier-header: 4;
+
+    --border-radius: 0px;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-transition: 0.2s ease; 
+    --my-accent-color: #1db954;
+    --my-accent-color-dark: #121212;
+    --my-accent-color-inactive: #292929;
+}
+
+body {
+    font-family: var(--font-family);
+    --keyColor: var(--my-accent-color);
+    --musicKeyColor: var(--my-accent-color);
+    --accent-color: var(--my-accent-color);
+    --fontFamilyLyrics: var(--font-family);
+}
+
+body.body--dark {
+    --q-primary: var(--my-accent-color-dark, var(--my-accent-color));
+}
+
+[class*="q-card__actions"] .artist-text {
+    font-family: var(--font-family-header) !important;
+    font-size: calc(var(--font-size) * var(--font-size-multiplier-header)) !important;
+    color: var(--my-accent-color);
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+[class*="volume-range"] {
+    --progressColor: var(--my-accent-color);
+    background: repeating-linear-gradient(
+        90deg,
+        var(--progressColor), /* Filled dashes */
+        var(--progressColor) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    background-size: var(--progress) 100%;
+    background-repeat: no-repeat;
+}
+
+[class*="detail-content"] .title {
+    font-family: var(--font-family-header) !important;
+    font-size: calc(var(--font-size) * var(--font-size-multiplier-header)) !important;
+    color: var(--my-accent-color);
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+[class*="time-code"] {
+    color: var(--my-accent-color);
+    opacity: 1;
+}
+
+[class*="profile-tab"],
+[class*="right-drawer-content"],
+[class*="sidebar-scroll-content"],
+[class*="lcd-player-glass"],
+[class*="absolute-full"] {
+    background: var(--my-accent-color-dark);
+    border: var(--border-width) var(--border-style);
+    border-color: var(--my-accent-color-inactive);
+    border-radius: var(--border-radius);
+    transition: border-color var(--border-transition);
+    margin: 20px;
+    overflow-x: visible !important;
+}
+
+[class*="profile-tab"]:hover,
+[class*="right-drawer-content"]:hover,
+[class*="sidebar-scroll-content"]:hover,
+[class*="lcd-player-glass"]:not([class*="lcd-player-glass-progress"]):hover,
+[class*="absolute-full"]:hover {
+    border-color: var(--my-accent-color);
+}
+
+[class*="right-drawer-content"]::before,
+[class*="lcd-player-glass"]:not([class*="lcd-player-glass-progress"])::before,
+[class*="absolute-full"]::before {
+    color: var(--my-accent-color-inactive);
+    background: var(--my-accent-color-dark);
+    padding: 0 3px;
+    z-index: 9;
+    transition: color 0.3s ease;
+    position: absolute;
+    top: -10px;
+    left: 4px;
+}
+
+[class*="profile-tab"]::before,
+[class*="sidebar-scroll-content"]::before {
+    color: var(--my-accent-color-inactive);
+    background: var(--my-accent-color-dark);
+    padding: 0 3px;
+    z-index: 9;
+    transition: color 0.3s ease;
+    top: -10px;
+    left: 4px;
+}
+
+[class*="sidebar-scroll-content"]::before { content: "Search"; }
+[class*="lcd-player-glass"]:not([class*="lcd-player-glass-progress"])::before { content: "Player"; }
+[class*="absolute-full"]::before { content: "Main"; }
+[class*="right-drawer-content"]::before { content: "Sidebar"; }
+[class*="profile-tab"]::before { content: "Profile"; }
+
+[class*="profile-tab"]:hover::before,
+[class*="right-drawer-content"]:hover::before,
+[class*="sidebar-scroll-content"]:hover::before,
+[class*="lcd-player-glass"]:not([class*="lcd-player-glass-progress"]):hover::before,
+[class*="absolute-full"]:hover::before {
+    color: var(--my-accent-color);
+}
+
+[class*="q-menu q-position-engine scroll q-menu--dark q-dark"] {
+    border: var(--border-width) var(--border-style) var(--my-accent-color);
+    border-radius: var(--border-radius) !important;
+}
